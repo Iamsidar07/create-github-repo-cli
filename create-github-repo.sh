@@ -54,4 +54,12 @@ if [[ "$user_response" == "y" ]]; then
     npx create-next-app@latest "$project_name"
 fi
 
-
+# Ask the user if they want to add shadcn ui
+read -p "Do you want to use shadcn ui? [y/n]" shadcn_user_response
+if [[ "$shadcn_user_response" == "y" ]]; then
+    echo "Adding shadcn ui..."
+    npx shadcn-ui@latest init || {
+        echo "Failed to add shadcn ui."
+        exit 1
+    }
+fi
