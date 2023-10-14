@@ -38,7 +38,7 @@ Before using this script, make sure you have the following prerequisites install
         ```
     - Save the file run:
         ```bash
-        source (shell)
+        source (path_to_your_shell)
         ```
 
 5. Secure your GITHUB_TOKEN add it into your shell profile:
@@ -52,4 +52,5 @@ Before using this script, make sure you have the following prerequisites install
   create-github-repo.sh <github_repo_name> <repo_description>
   ```
   replace **<github_repo_name>** with repository name and **<repo_description>** with description
-- Follow the propmt to create a next-app.
+- Ask to initialize a nextjs app.
+- Ask to initialize shadcn-ui.
