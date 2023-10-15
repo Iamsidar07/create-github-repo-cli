@@ -20,10 +20,31 @@ fi
 repo_name="$1"
 repo_description="$2"
 
-echo "Creating repo name: $repo_name and description: $repo_description"
+
+initialize_next_app() {
+read -p "Do you want to create next app? [y/n] " is_next_app
+if [ $is_next_app = y ]; then
+  echo "Creating next app... " 
+  npx create-next-app@latest
+fi
+}
+
+initialize_shadcn ()
+{
+ read -p "Do you want to add shadcn-ui? [y/n] " is_include_shadcn
+if [ $is_include_shadcn = y ]; then
+  echo "Adding shadcn ui..." 
+  npx shadcn-ui@latest init
+fi
+ 
+}
+
 
 # Function to create a GitHub repository
 create_github_repo() {
+
+    echo "Creating repo name: $repo_name and description: $repo_description"
+    
     result=$(http POST https://api.github.com/user/repos \
         "Accept: application/vnd.github.v3+json" \
         "Authorization: Bearer $GITHUB_TOKEN" \
@@ -61,19 +82,5 @@ create_github_repo() {
 # Call the create_github_repo function
 create_github_repo
 
-initialize_next_app() {
-  read -p "Do you want to create next app? [y/n] " is_next_app
-  if [ $is_next_app = y ]; then
-    echo "Creating next app... " 
-    npx create-next-app@latest
-  fi
-}
 
-initialize_shadcn () {
-  read -p "Do you want to add shadcn-ui? [y/n] " is_include_shadcn
-  if [ $is_include_shadcn = y ]; then
-    echo "Adding shadcn ui..." 
-    npx shadcn-ui@latest init
-  fi
-}
 
